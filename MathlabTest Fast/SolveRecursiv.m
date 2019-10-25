@@ -16,8 +16,8 @@ function [cM,cIteration] = SolveRecursiv (gM, iteration)
     global Cz;
 
 %Abbruchbedingungen
-maxDelta = 0.001;
-maxIteration = 20;
+maxDelta = 0.0001;
+maxIteration = 50;
 
     %Anker der Rekursivenfunktion
     if iteration > maxIteration
@@ -46,7 +46,7 @@ maxIteration = 20;
             [cM cIteration] = SolveRecursiv (cM, cIteration);
           
         end 
-    end
+    end 
     
     temp = 0;
 end

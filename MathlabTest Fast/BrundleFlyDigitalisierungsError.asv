@@ -1,0 +1,15 @@
+
+
+distMic0 = norm(mic0 - fly);
+distMic1 = norm(mic1 - fly);
+distMic2 = norm(mic2 - fly);
+distMic3 = norm(mic3 - fly);
+
+%Digitalisierungsfehler durch abtastrate von Mikrocontroller 100
+t0 = distMic0 / vSound  + (rand()*0.02-0.01);
+t1 = distMic1 / vSound  + (rand()*0.02-0.01);
+t2 = distMic2 / vSound  + (rand()*0.02-0.01);
+t3 = distMic3 / vSound  + (rand()*0.02-0.01);
+
+
+TimeDivs = [t0 t1 t2 t3];
