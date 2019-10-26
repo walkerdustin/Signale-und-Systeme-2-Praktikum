@@ -1,5 +1,4 @@
-%% Test: Anzahl benötigter Iterationen in Abhänigkeit der Boxgröße
-varCount = 100;  
+varCount = 1000;  
 arrIterations1x1x1 = zeros(1,varCount);
 arrIterations2x2x2 = zeros(1,varCount);
 arrIterations10x10x10 = zeros(1,varCount);
@@ -7,25 +6,28 @@ arrIterationError = -1 * ones(1,varCount);
 
 arrErrors = [];
 arrAvgErrors = [];
-arrDigitalisierungsfehler = linspace(0/100000, 1/100000 , 11  );
-    %%Test fuer Fehler Rechnung
-for digitalisierungsfehler = arrDigitalisierungsfehler
+arrSamplesPerSecond = [linspace(10000, 100000, 10  ), linspace(200000, 1000000 , 9  )];
+
+%% Test fuer Fehler Rechnung
+for SamplesPerSecond = arrSamplesPerSecond
     arrErrors = [];
     for i = 1:varCount
-        fly = bornFly(10,10,10);
-        BrundleFly;
+        fly = bornFly(1,1,1);
+        BrundleFlyDigitalisierungsError;
+        %BrundleFly;
         setDerivatives(TimeDivs);
-        gM = [0.5,0.5,0];
+        gM = [0.5,0.5,0.5];
         [cM, iteration] = SolveRecursiv (gM, 0);
-        if iteration > -1
-            arrErrors = [arrErrors (norm((cM - fly')))];            
+        d = norm(fly - cM');
+        if iteration > -1 && d < 0.07
+            arrErrors = [arrErrors, d];
         end
     end
     avgError = mean(arrErrors, 'all');
     arrAvgErrors = [arrAvgErrors avgError];
 end
 
-%% other Tests
+%% Test: Anzahl benötigter Iterationen in Abhänigkeit der Boxgröße
 %{  
       
      for i = 1:varCount

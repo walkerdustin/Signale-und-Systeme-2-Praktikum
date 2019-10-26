@@ -17,8 +17,8 @@ global A0;
     
 global TimeDivs;
 
-global digitalisierungsfehler;
-digitalisierungsfehler = 0.0;
+global SamplesPerSecond;
+SamplesPerSecond = 0.0;
 %% Settings
 %MikrophoneKoordinaten
 global mic0;
