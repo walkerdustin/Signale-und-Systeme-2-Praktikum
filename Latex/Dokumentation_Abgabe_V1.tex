@@ -84,5 +84,14 @@ C(x_{n},y_{n},z_{n})  &=  \sqrt{(x_{n}- x_{0})^{2} + (y_{n} - y_{0})^{2} + (z_{n
 
 
 \subsection{Evaluierung mit zufälligem Fehler $\pm$ $\varepsilon$ }
+Ein Fehler bei der Bestimmung der Laufzeitdifferenzen kann durch viele Einflüssen entstehen, wir wollen uns hier auf die zwei signifikantesten fokussieren. Der Fehler soll hier der Abstand der Schallquelle zur Position der berechneten Schallquelle.
+\subsection{Auswirkung der Abtastrate des Mikrocontrollers}
+Das analoge Audio-Signal muss in ein digitales Signal umgewandelt werden, um verarbeitet werden zu können. Der A/D Wandler hat jedoch eine endliche Abtastrate. Dies führt zu einem Digitalisierungsfehler. Durch eine Simulation haben wir herausgefunden wie die Abtastrate mit dem Fehler korreliert. An der Abbildung ist zu erkennen, dass der Fehler proportional zu 1/Abtastrate ist. Ein Raspberrry Pi hat zu Beispiel eine Abtastrate von 100kSamples pro Sekunde. Bei dieser Abtastrate, entsteht ein Fehler von durchschnittlich 2,5 mm.
+
+\subsection{Auswirkung der Schallgeschwindigkeit}
+Bei unseren Berechnungen sind wir bis jetzt immer von der Schallgeschwindigkeit von 343 m/s ausgegangen. Dies ist die Standard Geschwindigkeit bei 20° Lufttemperatur. Die Schallgeschwindigkeit ist proportional zu (Wurzel aus der Temperatur). Wenn also die Temperatur schwankt, beeinflusst dies auch die Schallgeschwindigkeit. (cϑ = c0 * sqrt(1+α * ϑ)   cϑ =  331,4 m/s * sqrt(1 + 1/273,15 * ϑ) in m/s). Dies führt zu Fehlern in den Laufzeitdifferenzen, die unsere Mikrofone aufnehmen. Eine Temperaturdifferenz der angenommenen Temperatur zur wahren Temperatur hat verfälscht also die Berechnete Position der Schallquelle. Dies haben wir mit MatLab simuliert. In der Abbildung ist zu erkennen, dass der Fehler proportional zur Temperaturdifferenz ist. Wenn wir also mit unserer angenommen Temperatur um 20° daneben liegen, dann wird der Laser das Ziel um 30mm verfehlen. Dieser Fehler ist besonders fatal, da es sich hierbei um einen systematischen Fehler handelt. Wir müssen also die schwankende Schallgeschwindigkeit kompensieren um unser Ziel zu treffen.
 %_________________________________________________________________________________________________
 \subsection{Optimierung der Mikrofonanordnung}
+
+
+\end
