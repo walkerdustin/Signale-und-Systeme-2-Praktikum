@@ -1,5 +1,5 @@
 figure
-[x y z] = sphere;
+[x, y, z] = sphere;
 
 mesh(distMic0*x+mic0(1),distMic0*y+mic0(2),distMic0*z+mic0(3), 'FaceColor', [0 0 1], 'FaceAlpha', 0.05, 'LineStyle' , ':');
 hold on

@@ -1,3 +1,0 @@
-\babel@toc {ngerman}{}
-\contentsline {section}{\numberline {I}Alpha}{1}% 
-\contentsline {subsection}{\numberline {\mbox {I-A}}AlphaBeta}{1}% 

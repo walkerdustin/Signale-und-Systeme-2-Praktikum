@@ -1,4 +1,4 @@
-varCount = 1000;  
+varCount = 100;  
 arrIterations1x1x1 = zeros(1,varCount);
 arrIterations2x2x2 = zeros(1,varCount);
 arrIterations10x10x10 = zeros(1,varCount);
@@ -6,14 +6,36 @@ arrIterationError = -1 * ones(1,varCount);
 
 arrErrors = [];
 arrAvgErrors = [];
+%% Test fuer Fehler Rechnung durch Schallgeschwindigkeit bzw.: Temperatur
+arrTemperature = 0:5:60;
+
+for temperature = arrTemperature
+    arrErrors = [];
+    for i = 1:varCount 
+        fly = bornFly(1,1,1);
+        BrundleFlyWithError;
+        %BrundleFly;
+        setDerivatives(TimeDivs);
+        gM = [0.5, 0.5, 0.5];
+        [cM, iteration] = SolveRecursiv (gM, 0);
+        d = norm(fly - cM');
+        if iteration > -1 && d < 0.2
+            arrErrors = [arrErrors, d];
+        end
+    end
+    avgError = mean(arrErrors, 'all');
+    arrAvgErrors = [arrAvgErrors avgError];
+end
+
+%% Test fuer Fehler Rechnung durch Samples per second
+%{ 
 arrSamplesPerSecond = [linspace(10000, 100000, 10  ), linspace(200000, 1000000 , 9  )];
 
-%% Test fuer Fehler Rechnung
 for SamplesPerSecond = arrSamplesPerSecond
     arrErrors = [];
     for i = 1:varCount
         fly = bornFly(1,1,1);
-        BrundleFlyDigitalisierungsError;
+        BrundleFlyWithError;
         %BrundleFly;
         setDerivatives(TimeDivs);
         gM = [0.5,0.5,0.5];
@@ -26,7 +48,7 @@ for SamplesPerSecond = arrSamplesPerSecond
     avgError = mean(arrErrors, 'all');
     arrAvgErrors = [arrAvgErrors avgError];
 end
-
+%}
 %% Test: Anzahl benötigter Iterationen in Abhänigkeit der Boxgröße
 %{  
       

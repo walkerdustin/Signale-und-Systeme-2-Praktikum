@@ -19,6 +19,9 @@ global TimeDivs;
 
 global SamplesPerSecond;
 SamplesPerSecond = 0.0;
+
+global temperature;
+temperature = 20;
 %% Settings
 %MikrophoneKoordinaten
 global mic0;
