@@ -7,6 +7,10 @@
 \BOOKMARK [1][-]{section.2}{Aufgabe 2}{}% 7
 \BOOKMARK [2][-]{subsection.2.1}{Mathematischer Ansatz: Newtonverfahren}{section.2}% 8
 \BOOKMARK [3][-]{subsubsection.2.1.1}{Ausgangsgleichungen auf drei Dimensionen erweitert}{subsection.2.1}% 9
-\BOOKMARK [3][-]{subsubsection.2.1.2}{Partielle Ableitungen der Gleichungen \040\(??\)}{subsection.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.2}{Evaluierung mit zuf\344lligem Fehler \040 }{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.3}{Optimierung der Mikrofonanordnung}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Partielle Ableitungen der Ausgangsgleichungen erstellen}{subsection.2.1}% 10
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Erstellen einer Tangentialfl\344che E an die Funktion f aus den partiellen Ableitungen}{subsection.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.2}{Statistische Auswertung des Einflusses des gesch\344tzten Ortes der Schallquelle}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.3}{Statistische Auswertung der Iterationszahlen des Newtonverfahrens in Abh\344ngigkeit der Raumgr\366\337e}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.4}{Statistische Auswertung der Fehlerf\344lle in Abh\344ngigkeit der Positionen der Mikrofone im Raum}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.5}{Evaluierung mit zuf\344lligem Fehler \040}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.6}{Auswahl der bestm\366glichen Parametrierung unter Ber\374cksichtigung der Ergebnisse der Analysen}{section.2}% 16
