@@ -59,7 +59,9 @@ Aus den Zeitverschiebungen, mit der das Signal der Schall-quelle von den Mikrofo
 
 Die Zeitverschiebung der Signale kann durch die Korrelation der Signale S1, S2 und S3 gegen das Signal S0 berechnet werden. Im Buch "Mathematik der digitalen Medien" von Bossert und Bossert wird das Verfahren für den zweidimensionalen Raum sehr ausführlich beschrieben. Weitere Erklärungen zum Verfahren können dort im Kapitel 2.3 unter "zweidimensionale Positionsbestimmung" nachgelesen werden. Auf dieser Arbeit beruhen unsere Berechnungen. Das Verfahren kann sehr leicht auf die hier benötigte, dritte Dimension erweitert werden. Dafür wurde bei den Ausgangsgleichungen eine dritte für die z-Komponente hinzugefügt. Ebenso mussten die partiellen Ableitungen entsprechend von vier auf neun erweitert werden. 
 \subsubsection{Ausgangsgleichungen auf drei Dimensionen erweitert}
-
+\paragraph{Erklärung der Variablen in den Gleichungen}
+$x_{n}$,$y_{n}$,$z_{n}$ sind die dritten Werte der Arrays aus x,y,z Koordinaten der Annäherung an die Schallquelle. Die  $x_{0}$,$y_{0}$,$z_{0}$ Werte sind, die ersten Schätzwerte für die Approximation. $x_{1}$,$y_{1}$,$z_{1}$  stellen die ersten berechneten Werte dar. $(t_{0} - t_{1})$ Ist die Zeitdifferenz zwischen den beiden Signalen 0 und 1. $v_{0}$ ist die Schallgeschwindigkeit, wir gehen bei unseren Berechnungen von 343 m/s aus.
+\paragraph{Herleitung der Lösungsmatrix} 
 \begin{align}
 \begin{split}
 A(x_{n},y_{n},z_{n})  &=  \sqrt{(x_{n}- x_{0})^{2} + (y_{n} - y_{0})^{2} + (z_{n} - z_{0})^{2}} \\& - \sqrt{(x_{n}- x_{1})^{2} + (y_{n} - y_{1})^{2} + (z_{n} - z_{1})^{2}} \\ & - (t_{0} - t_{1}) \cdot v_{0} = 0\label{Gleichung1}
@@ -280,24 +282,24 @@ MIC2 = (1,0,0)\\
 MIC3 = (1,1,0)
 MIC4 = (0.5,0.5,1)\\
 \begin{figure}
-\begin{minipage}[t]{0.33\linewidth}
+
 \centering 
 \includegraphics[width=0.4\textwidth]{MP1}
 \caption{Lage der Mikrophone in Variante 1}\label{fig:Lage der Mikrophone Variante 1}
 \includegraphics[width=0.4\textwidth]{MP2}
 \caption{Lage der Mikrophone in Variante 2}\label{fig:Lage der Mikrophone in Variante 2}
-\end{minipage}
-\begin{minipage}[t]{0.33\linewidth}
 \includegraphics[width=0.4\textwidth]{MP3}
 \caption{Lage der Mikrophone in Variante 3}\label{fig:Lage der Mikrophone in Variante 3}
+
+\end{figure}
+\begin{figure}
+\centering
 \includegraphics[width=0.4\textwidth]{MP4}
 \caption{Lage der Mikrophone in Variante 4}\label{fig:Lage der Mikrophone Variante 4}
-\end{minipage}
-\begin{minipage}[t]{0.33\linewidth}
 \centering
 \includegraphics[width=0.4\textwidth]{MP5}
 \caption{Lage der Mikrophone in Variante 5}\label{fig:Lage der Mikrophone in Variante 5}
-\end{minipage}
+
 \end{figure}
 Zur einfacheren Visualisierung sind die Mikrofonkonstellationen in den Grafiken 11 bis 15 dargestellt. \\
 In MP1 bilden drei der Mikrofone ein Dreieck in einer Fläche, das vierte Mikrofon befindet sich in einer anderen Höhe, außerhalb der Dreiecksfläche.\\
