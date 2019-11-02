@@ -324,21 +324,35 @@ Die Vermutung traf zu, dass mit Verringerung des Abstandes zwischen den Mikrofon
 Bei MP4 zu MP5 ist ein Faktor nicht direkt ableitbar, aber die Ergebnisse deuten in die selbe Richtung. Größerer Abstand führt zu besseren Ergebnissen.
 Da die Fehleranzahl von MP5 deutlich geringer ist, als die von MP1, scheint die Geometrie mit der "Pyramidenspitze" oberhalb der Grundfläche besser zu sein, als die außerhalb der Grundfläche.
 %_________________________________________________________________________________________________________________
+
+
 \subsection{Evaluierung mit zufälligem Fehler $\pm$ $\varepsilon$}
 Ein Fehler bei der Bestimmung der Laufzeitdifferenzen kann durch viele Einflüssen entstehen, wir wollen uns hier auf die zwei signifikantesten fokussieren. Der Fehler soll hier der Abstand der Schallquelle zur Position der berechneten Schallquelle.
 \paragraph{Auswirkung der Abtastrate des Mikrocontrollers}
-Das analoge Audio-Signal muss in ein digitales Signal umgewandelt werden, um verarbeitet werden zu können. Der A/D Wandler hat jedoch eine endliche Abtastrate. Dies führt zu einem Digitalisierungsfehler. Durch eine Simulation haben wir herausgefunden wie die Abtastrate mit dem Fehler korreliert. An der Abbildung ist zu erkennen, dass der Fehler proportional zu 1/Abtastrate ist. Ein Raspberrry Pi hat zu Beispiel eine Abtastrate von 100kSamples pro Sekunde. Bei dieser Abtastrate, entsteht ein Fehler von durchschnittlich 2,5 mm.
+Das analoge Audio-Signal muss in ein digitales Signal umgewandelt werden, um verarbeitet werden zu können. Der A/D Wandler hat jedoch eine endliche Abtastrate. Dies führt zu einem Digitalisierungsfehler. Durch eine Simulation haben wir herausgefunden, wie die Abtastrate mit dem Fehler korreliert. An der Abbildung ist zu erkennen, dass der Fehler proportional zu 1/Abtastrate ist. Ein Raspberrry Pi hat zum Beispiel eine Abtastrate von 100kSamples pro Sekunde. Bei dieser Abtastrate, entsteht ein Fehler von durchschnittlich 2,5 mm.
 
 \paragraph{Auswirkung der Schallgeschwindigkeit}
-Bei unseren Berechnungen sind wir bis jetzt immer von der Schallgeschwindigkeit von 343 m/s ausgegangen. Dies ist die Standard Geschwindigkeit bei 20° Lufttemperatur. Die Schallgeschwindigkeit ist proportional zu $\sqrt{\vartheta}$. Wenn also die Temperatur schwankt, beeinflusst dies auch die Schallgeschwindigkeit. 
+Bei unseren Berechnungen sind wir bis jetzt immer von der Schallgeschwindigkeit von 343 m/s ausgegangen. Dies ist die Standard Geschwindigkeit bei 20° Celsius Lufttemperatur. Die Schallgeschwindigkeit ist proportional zu $\sqrt{\vartheta}$. Wenn also die Temperatur schwankt, beeinflusst dies auch die Schallgeschwindigkeit. 
 \begin{align}
 c\vartheta = c0 * \sqrt{1+\alpha * \vartheta}\\   
 c\vartheta =  331,4 m/s * \sqrt{1 + 1/273,15 * \vartheta}
 \end{align}
- in m/s. Dies führt zu Fehlern in den Laufzeitdifferenzen, die unsere Mikrofone aufnehmen. Eine Temperaturdifferenz der angenommenen Temperatur zur wahren Temperatur hat verfälscht also die Berechnete Position der Schallquelle. Dies haben wir mit MATLAB simuliert. In der Abbildung ist zu erkennen, dass der Fehler proportional zur Temperaturdifferenz ist. Wenn wir also mit unserer angenommen Temperatur um 20° daneben liegen, dann wird der Laser das Ziel um 30 mm verfehlen. Dieser Fehler ist besonders fatal, da es sich hierbei um einen systematischen Fehler handelt. Wir müssen also die schwankende Schallgeschwindigkeit kompensieren um unser Ziel zu treffen.
+Dies führt zu Fehlern in den Laufzeitdifferenzen, die unsere Mikrofone aufnehmen. Eine Temperaturdifferenz der angenommenen Temperatur zur wahren Temperatur hat verfälscht also die Berechnete Position der Schallquelle. Dies haben wir mit MATLAB simuliert. In der Abbildung ist zu erkennen, dass der Fehler proportional zur Temperaturdifferenz ist. Wenn wir also mit unserer angenommen Temperatur um 20° Celsius daneben liegen, dann wird der Laser das Ziel um 30 mm verfehlen. Dieser Fehler ist besonders fatal, da es sich hierbei um einen systematischen Fehler handelt. Wir müssen also die schwankende Schallgeschwindigkeit kompensieren, um unser Ziel zu treffen.
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{Chart Abtastrate}
+\caption{Einfluss der Abtastrate auf die Genauigkeit der Positionsbestimmung}\label{fig:Einfluss der Abtastrate auf die Genauigkeit der Positionsbestimmung}
+\end{figure}
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{Chart Temperatur}
+\caption{Einfluss der Temperatur auf die Genauigkeit der Positionsbestimmung}\label{fig:Einfluss der Temperatur auf die Genauigkeit der Positionsbestimmung}
+\end{figure}
 %_________________________________________________________________________________________________
 \subsection{Auswahl der bestmöglichen Parametrierung unter Berücksichtigung der Ergebnisse der Analysen}
-Nach Abschluss aller Simulationen bleibt als Fazit zu ziehen, dass als Abbruchbedingung für das Newtonverfahren eine Annäherung auf < 1mm zu genau ist, da in der Realität die Störfaktoren durch den Linearisierungsfehler, sowie die veränderte Schallgeschwindigkeit im Extremfall eine Abweichung von > 30mm darstellen.\\
+Nach Abschluss aller Simulationen bleibt als Fazit zu ziehen, dass als Abbruchbedingung für das Newtonverfahren eine Annäherung auf $<$ 1mm zu genau ist, da in der Realität die Störfaktoren durch den Linearisierungsfehler, sowie die veränderte Schallgeschwindigkeit im Extremfall eine Abweichung von $>$ 30mm darstellen.\\
 Als geschätzter Startwert sollte der Mittelpunkt des Raumes gewählt werden und die Mikrofone sollten möglichst mit größtmöglichen Abstand, in einer tetraedrischen Anordnung, im Raum verteilt werden. Im vorliegenden Fall bedeutet dies einen Startwert von SW = (0.5,0.5,0.5) und eine Mikrofonpositionierung an den Orten: \\
 MIC1 = (0,0,0)
 MIC2 = (1,0,0)\\
