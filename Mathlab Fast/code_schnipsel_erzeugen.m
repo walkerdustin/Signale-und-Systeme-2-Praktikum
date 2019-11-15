@@ -1,7 +1,7 @@
 % schallgeschwindigkeit ist vSound
-% abgetastet wurde mit 48 khz
+% abgetastet wurde mit 96 khz
 % nun: t = dismic/V
-% anzahl verpasster Werte: x =  t * 48000 + 10000
+% anzahl verpasster Werte: x =  t * 96000 + 10000
 % verwendetes Signal : micsig = Wert x+1 bis x+ 100000
 
 

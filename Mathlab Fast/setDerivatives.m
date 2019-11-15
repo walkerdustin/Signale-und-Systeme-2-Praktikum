@@ -22,6 +22,8 @@ function setDerivatives (TimeDivs)
     t1 = TimeDivs(2);
     t2 = TimeDivs(3);
     t3 = TimeDivs(4);
+    
+    
 
     x0 = mic0(1);    y0 = mic0(2);    z0 = mic0(3);
     x1 = mic1(1);    y1 = mic1(2);    z1 = mic1(3);

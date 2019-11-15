@@ -42,10 +42,10 @@ mic3 = [0.5 0.5 1];
 % mic1sig...
 % deren Erzeugung folgt noch, hier vorl�ufig mit dem Moskitosignal
 % initialisiert.
-load('moskito48khz')
-Qt = moskito48khz;
+load('moskito96khz')
+Qt = moskito96khz;
 
-samplingRate = 48000;
+samplingRate = 96000;
 
 
 
