@@ -42,10 +42,11 @@ maxIteration = 20;
         if distance > 100
             cM = [-1 -1 -1];
             cIteration = -1;
-            return
         elseif  distance > maxDelta 
             [cM cIteration] = SolveRecursiv (cM, cIteration);
           
         end 
     end
+    
+    temp = 0;
 end
