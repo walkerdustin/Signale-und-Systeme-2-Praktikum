@@ -27,7 +27,7 @@ for i = 1:varCount
         
 end
     a = arrAbweichung * 100;
-    a = a(abs(a)<100);
+    
     aa = mean(a)
 
 %{
