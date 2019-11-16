@@ -12,5 +12,5 @@ t2 = distMic2 / vSound;
 t3 = distMic3 / vSound;
 
 
-TimeDivs = [t0 t1 t2 t3];
+TimeDivs = [(t0-t1) (t0-t2) (t0-t3)];
 

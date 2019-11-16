@@ -18,10 +18,9 @@ function setDerivatives (TimeDivs)
     global mic3;
     
     global vSound
-    t0 = TimeDivs(1);
-    t1 = TimeDivs(2);
-    t2 = TimeDivs(3);
-    t3 = TimeDivs(4);
+    t10 = TimeDivs(1);  %t0-t1
+    t20 = TimeDivs(2);  %t0-t2
+    t30 = TimeDivs(3);  %t0-t3
     
     
 
@@ -32,9 +31,9 @@ function setDerivatives (TimeDivs)
     
     syms xn yn zn;
     %@(xn, yn, zn); norm statt sqrt
-    A0 = @(xn, yn, zn) sqrt((xn-x0)^2+(yn-y0)^2+(zn-z0)^2) - sqrt((xn-x1)^2+(yn-y1)^2+(zn-z1)^2) - (t0-t1)*vSound;
-    B0 = @(xn, yn, zn) sqrt((xn-x0)^2+(yn-y0)^2+(zn-z0)^2) - sqrt((xn-x2)^2+(yn-y2)^2+(zn-z2)^2) - (t0-t2)*vSound;
-    C0 = @(xn, yn, zn) sqrt((xn-x0)^2+(yn-y0)^2+(zn-z0)^2) - sqrt((xn-x3)^2+(yn-y3)^2+(zn-z3)^2) - (t0-t3)*vSound;
+    A0 = @(xn, yn, zn) sqrt((xn-x0)^2+(yn-y0)^2+(zn-z0)^2) - sqrt((xn-x1)^2+(yn-y1)^2+(zn-z1)^2) - (t10)*vSound;
+    B0 = @(xn, yn, zn) sqrt((xn-x0)^2+(yn-y0)^2+(zn-z0)^2) - sqrt((xn-x2)^2+(yn-y2)^2+(zn-z2)^2) - (t20)*vSound;
+    C0 = @(xn, yn, zn) sqrt((xn-x0)^2+(yn-y0)^2+(zn-z0)^2) - sqrt((xn-x3)^2+(yn-y3)^2+(zn-z3)^2) - (t30)*vSound;
     
     
     Ax = @(xn, yn, zn) (2*xn - 2*x0)/(2*((xn - x0)^2 + (yn - y0)^2 + (zn - z0)^2)^(1/2)) - (2*xn - 2*x1)/(2*((xn - x1)^2 + (yn - y1)^2 + (zn - z1)^2)^(1/2));

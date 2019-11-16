@@ -1,4 +1,5 @@
-varCount = 100;  
+
+varCount = 1000;  
 arrIterations1x1x1 = zeros(1,varCount);
 arrIterations2x2x2 = zeros(1,varCount);
 arrIterations10x10x10 = zeros(1,varCount);
@@ -6,6 +7,30 @@ arrIterationError = -1 * ones(1,varCount);
 
 arrErrors = [];
 arrAvgErrors = [];
+arrAbweichung = [];
+
+%% Test für Abweichung in Abhängikeit der Kcorr
+
+for i = 1:varCount
+        
+       fly = bornFly(1,1,1);
+       BrundleFly;
+       
+       code_schnipsel_erzeugen;
+        Normierung;
+
+        Correlation;
+        
+        arrAbweichung = [arrAbweichung ((corrTdiff01-corrTdiff01korrekt)/corrTdiff01korrekt) ((corrTdiff02-corrTdiff02korrekt)/corrTdiff02korrekt) ((corrTdiff03-corrTdiff03korrekt)/corrTdiff03korrekt)];
+        
+      
+        
+end
+    a = arrAbweichung * 100;
+    a = a(abs(a)<100);
+    aa = mean(a)
+
+%{
 %% Test fuer Fehler Rechnung durch Schallgeschwindigkeit bzw.: Temperatur
 arrTemperature = 0:5:60;
 
@@ -26,7 +51,7 @@ for temperature = arrTemperature
     avgError = mean(arrErrors, 'all');
     arrAvgErrors = [arrAvgErrors avgError];
 end
-
+%}
 %% Test fuer Fehler Rechnung durch Samples per second
 %{ 
 arrSamplesPerSecond = [linspace(10000, 100000, 10  ), linspace(200000, 1000000 , 9  )];
@@ -106,4 +131,21 @@ mic3 = [1   1   0];
     end
 
 %}
+%}
+
+
+
+
+
+%{
+
+%% Korrtest
+
+a = 25:50;
+a = a/mean(a);
+b = 27:52;
+b = b/mean(b);
+
+a = a(5:15);
+b = b(5:15);
 %}

@@ -1,4 +1,4 @@
-corrSegmentLength = 50000; % Länge des Korrelationssegment
+corrSegmentLength = 350; % Länge des Korrelationssegment
 corrBegin = 1000; %Stelle ab der Korrelationssegment ausgeschnitten werden soll
 corrEnde = corrBegin + corrSegmentLength;
 
@@ -6,12 +6,15 @@ corrEnde = corrBegin + corrSegmentLength;
 
 corrSegment = mic0sig(corrBegin:corrEnde);
 
-
+mic0sigMain = mic0sig(corrBegin:(corrEnde+corrSegmentLength));
+mic1sigMain = mic1sig(corrBegin:(corrEnde+corrSegmentLength));
+mic2sigMain = mic2sig(corrBegin:(corrEnde+corrSegmentLength));
+mic3sigMain = mic3sig(corrBegin:(corrEnde+corrSegmentLength));
 %plot(xcorr(mic0,corrSegment,200,'unbiased')
-corrMic0 = xcorr(mic0sig,corrSegment);
-corrMic1 = xcorr(mic1sig,corrSegment);
-corrMic2 = xcorr(mic2sig,corrSegment);
-corrMic3 = xcorr(mic3sig,corrSegment);
+corrMic0 = xcorr(mic0sigMain,corrSegment);
+corrMic1 = xcorr(mic1sigMain,corrSegment);
+corrMic2 = xcorr(mic2sigMain,corrSegment);
+corrMic3 = xcorr(mic3sigMain,corrSegment);
 
 
 [temp corrIndex0] = max(corrMic0);
@@ -28,7 +31,8 @@ corrTdiff02 = corrIndexDiff02/samplingRate;
 corrTdiff03 = corrIndexDiff03/samplingRate;
 
 
-corrTdiff01korrekt = t1 - t0;
-corrTdiff02korrekt = t2 - t0;
-corrTdiff03korrekt = t3 - t0;
+corrTdiff01korrekt = t0 - t1;
+corrTdiff02korrekt = t0 - t2;
+corrTdiff03korrekt = t0 - t3;
 
+timeDiffsCorr = [corrTdiff01 corrTdiff02 corrTdiff03];
