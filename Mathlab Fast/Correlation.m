@@ -1,5 +1,5 @@
-corrSegmentLength = 350; % Länge des Korrelationssegment
-corrBegin = 10000; %Stelle ab der Korrelationssegment ausgeschnitten werden soll
+corrSegmentLength = 3000; % Länge des Korrelationssegment
+corrBegin = 7500; %Stelle ab der Korrelationssegment ausgeschnitten werden soll
 corrEnde = corrBegin + corrSegmentLength;
 
 %xcorr/rm0,rm1,200,*unbiased+

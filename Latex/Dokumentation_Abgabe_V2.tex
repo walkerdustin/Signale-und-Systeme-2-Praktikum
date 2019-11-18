@@ -90,3 +90,24 @@ Bei der Analyse wurde die Korrelation mit allen Mikrophonen jeweils 1000 mal dur
 Aufgrund des in Abbildung \ref{fig:Korrelation2} beschriebenen Signalaufbaus wird allein eine Signalmesslaufzeit von beinahe $110ms$ benötigt, wobei die benötigte Rechenzeit noch nicht berücksichtigt wurde.
 Da eine noch längere Messung das Orten des Moskitos unmöglich machen, da jenes nach der Berrechnung stets an einem anderen Ort sein würde. Sollte keine größere Korrelationslänge als $K_{corr} = 3500$ gewählt  und stattdessen lieber die angegebene  Fehlerquote in Kauf genommen werden.
 
+
+\subsubsection{Position des Hauptsignals}
+Ein weiterer Faktor beim Signal aufbau ist der Beginn der Hauptsignale. Bei der Untersuchung dieses Parameters (siehe Abbildung \ref{fig:KorrelationAnalyse3}) sticht deutlich der Signalstart bei 7500 herraus, da dort die relative Fehlerquote am geringsten ist.
+Wiederholt man nun die Analyse aus dem vorherigen Kapitel sind ist hier ebenfalls eine deutliche Verringerung der Fehlerquote zu erkennen (siehe Abbildung \ref{fig:KorrelationAnalyse4}). Auch hier wird deutlich, dass die Fehlerquote mit steigender Länge des Korrelationssignals sinkt.
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationsAnalyse4}
+\caption{Relative Fehlerquote in Abhängigkeit von $K_{corr}$  \linebreak(Start der Aufzeichnung nach 7500 Werten)} \label{fig:KorrelationAnalyse4}
+\end{figure}
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationsAnalyse3}
+\caption{Relative Fehlerquote in des Signalstarts $K_{corr}$  \linebreak(5000 Messungen mit $K_{corr}=1000$)} \label{fig:KorrelationAnalyse3}
+\end{figure}
+\subsubsection{Zusammenfassung der Untersuchung }
+Abschließend lässt sich zusammenfassen, dass die berechenete Länge des Korrelationssignal deutlich zu kurz für eine akzeptable Positionsbestimmung ist. Aus der Analyse des Startwartes wird deutlich, dass die Ergebnisse stark von dem jeweiligen Signalabschnitt abhängen. Da es in der Realität das Signal des Moskitos allerdings nicht statisch ist wie in der Simulation, ist diese Analyse sekundär, da die Position beim realen Signal nicht beeinflusst werden kann. Allerdings lässt diese Position gut für die Analyse des Rauscheinflusses verwenden. \\\\\\
+Für weitere Berechnungen werden von nun an die Parameter wie folgt gewählt:\\
+$$K_{Startwert} = 7500$$
+$$K_{corr} = 3000$$
+$$K_{sig} = 6000$$

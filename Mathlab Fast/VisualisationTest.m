@@ -60,10 +60,46 @@ ylabel('Fehleranzahl [%]');
 xlabel('K_{corr}');
 %}
 
-plot(xcorr(mic2sigMain, corrSegment))
-title('Korrelation');
 
 
+%x = categorical({'350','750', '1000', '1500','2000','2500','3000','3500'});
+x = [350,750,1000,1500,2000,2500,3000,3500];
+y = [8.6,5.8,3.7,2.9,1.8,1.7,1.5,0.5];
+b = bar(x,y);
+
+xtips1 = b(1).XEndPoints;
+ytips1 = b(1).YEndPoints;
+labels1 = string(b(1).YData);
+text(xtips1,ytips1,labels1,'HorizontalAlignment','center',...
+    'VerticalAlignment','bottom')
+
+
+ title('Relative Fehlerhäufigkeit in Abhängigkeit von K_{corr}');
+ylabel('Fehleranzahl [%]');
+xlabel('K_{corr}');
+
+%{
+%x = categorical({'350','750', '1000', '1500','2000','2500','3000','3500'});
+x = [5000,7500,10000,12500,15000];
+y = [23.1,3.7,37.9,31.9,21.8];
+b = bar(x,y);
+
+xtips1 = b(1).XEndPoints;
+ytips1 = b(1).YEndPoints;
+labels1 = string(b(1).YData);
+text(xtips1,ytips1,labels1,'HorizontalAlignment','center',...
+    'VerticalAlignment','bottom')
+
+
+ title('Relative Fehlerhäufigkeit in Abhängigkeit des Signalstarts');
+ylabel('Fehleranzahl [%]');
+xlabel('Signalstart');
+
+
+%plot(xcorr(mic2sigMain, corrSegment))
+%title('Korrelation');
+
+%}
 
 %{
 x = [1:260002];
