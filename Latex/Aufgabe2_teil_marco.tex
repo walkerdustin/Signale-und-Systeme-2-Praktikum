@@ -1,0 +1,46 @@
+\section{Signalnormierung}
+Als ersten Schritt haben wir das Signal des Moskitos Q(t) normiert, um definierte Pegel zu erhalten und ein etwaiges Offset, dass aus der Hardware resultieren könnte herauszurechnen.
+\subsection{Mathematischer Ansatz}
+Dazu wurde der arithmetische Mittelwert des Signals gebildet und dieser von jedem Signalwert abgezogen. Es wurde nun die Leistung dieses mittelwertfreien Signals berechnet und das Signal mit der Quadratwurzel des Kehrwertes der Leistung
+multipliziert. 
+In MatLAB kann der arithmetische Mittelwert eines Signals mit der "mean" - Funktion berechnet werden. Die Leistung eines Signals kann mit der "Bandpower" - Funktion berechnet werden.   
+\subsection{Gleichung}
+\begin{align}
+\begin{split}
+Q(t) &= dfrac{1}{\sqrt{bandpower(Q(t)- mean(Q(t)))}} \\ &* Q(t)- mean(Q(t))
+\end{split}
+\end{align}
+\section{Mikrofonsignale erstellen}
+Um unsere Korrelationsfunktion und die Rauschfilterung zu testen haben wir aus dem bereitgestellten Mosiktosignal die Signale erzeugt, welche von den Mikrofonen aufgezeichnet worden wären. Hierfür haben wir das normierte Signal Q(t) verwendet. \\ 
+\subsection{Ausgangssituation}
+Die Position des Moskitos im Raum lassen wir uns an einem zufälligen Ort erzeugen. Dieser Ort ist uns aber bekannt. Ebenso berechnen wir uns die Abstände der vier Mikrofone zu dem Moskito. Die Schallgeschwindigkeit vSound ist uns ebenfalls bekannt. Das Soundfile des Moskitos ist uns ebenfalls bekannt aus der Aufgabenstellung. Die Abtastrate des Signals ist uns ebenfalls bekannt und für die Berechnung von Bedeutung\\
+Aus der Aufgabenstellung geht hervor, dass die Signale, die von den Mikrofonen aufgezeichnet werden, 100000 Werte beinhalten sollen. Ein Mikrofon mit Abstand 0 zum Moskito soll die Werte 10001 bis 110000 des Moskitosignals aufzeichnen.
+\subsection{Berechnung der Mikrofonsignale}
+Schalllaufzeit zum Mikrofon :
+\begin{align}
+\begin{split}
+\\ t = \dfrac{Abstand vom Mikrofon zur Schallquelle}{vSound}
+\end{split}
+\end{align}
+Anzahl der verpassten Signalwerte :
+\begin{align}
+\begin{split}
+\\ x = Abtastrate * t
+\end{split}
+\end{align}
+Beginn des Mikrofonsignals:
+\begin{align}
+\begin{split}
+\\ a = Q(10001 + x)
+\end{split}
+\end{align}
+Ende des Mikrofonsignals:
+\begin{align}
+\begin{split}
+ \\b = Q(10001 + x + 100000)
+\end{split}
+\end{align}
+
+Das kann in MatLAB mit Q(a:b) realisiert werden.
+Diese Funktion muss für jedes Mikrofon durchgeführt werden, mit dem entsprechenden Abstand zum Moskito.
+So können die vier Ausgangssignale für die weiteren Aufgaben erstellt werden.
