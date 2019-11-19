@@ -29,7 +29,7 @@ Bei dem Korrelationssignal handelt es sich um einen Auszug aus dem Hauptsignal d
 Die Länge des Korrelationssignals $K_{corr}$ beieinflusst die Genauigkeit der Differenzmessung deutlich. Ist die Länge des Teilsignals zu kurz, ist keine genaue Positionsermittlung möglich, da es sein kann, dass die betrachteten Wertfolgen mehrmals in dem Hauptsignal auftauchen, bzw. verschwimmen. Durch die Verlängerung des Teilsignals wird dies verhindert und eine exaktere Positionsbestimmung mittels der Korrelation ist möglich. Längere Zeitsignale erhöhen allerdings den Rechenaufwand und damit die Rechendauer. \\
 Als Richtwert wird dabei der Extremfall mit der maximal Möglichen Signalverschiebung angewendet. Dieser tritt auf, wenn sich der Moskito auf der Verbindungsgerade der am weitesten entfernten Mikrofone und auserhalb des Raumes befindet. 
 Diese maximal Mögliche Signal verschiebung wurde bereits im Unterkapitel \ref{sec:Eins}  errechnet.\\
-Somit wird eine Länge des Korrelationssignals von $K_{corr}=350$ verwendet. Die Auswahl wird anhand der Simulation in Unterkapitel  \ref{sec:Untersuchung} genauer untersucht.    \
+Somit wird eine Länge des Korrelationssignals von $K_{corr}=350$ verwendet. Die Auswahl wird anhand der Simulation in Unterkapitel  \ref{sec:Untersuchung} genauer untersucht.    
 \\
 \subsection{Länge der Hauptsignale $K_{sig}$}
 Die Länge der Hauptsignale $K_{sig}$ ist direkt von der Länge des Korrelationssignals $K_{corr}$ abhängig. Auch hier ist insbesondere der oben geschilderte Extremfall zubetrachten:\\
@@ -38,7 +38,7 @@ Da für eine möglichst exakte Bestimmung ist es notwendig, dass möglichst dass
 K_{sig} =  2 * K_{corr}
 \end{equation}
 Somit ergibt sich für das Hauptsignal eine Länge von 700 Signalwerten.
-
+Durch die Korrelation des kürzeren Korrelationssignal mit längeren Hauptsignalen wird das Zero-Padding reduziert, wodurch eine deutlichere Bestimmung der Laufzeit unterschiede möglich ist.
 \subsection{Übersicht der Signale}
 
 
@@ -55,4 +55,59 @@ Falls die Begrenzung auf den Mikrofonraums gilt, sollte eine Signallänge von $K
 
 
 \subsection{Untersuchung der Annahmen} \label{sec:Untersuchung}
+Bei der Untersuchung der erstellten Annahmen stellte sich heraus, dass die Annahmen zu einer sehr hohen Fehlerquote bei der Korrelation führten. Ein Fehler tritt auf, wenn die über das Korrelationsmaximum ermittelte Signalverschiebung nicht mit dem tatsächlichen Wert übereinstimmt. \\
 
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationA}
+\caption{Beispiel einer "fehlerhaften" Korrelation ($K_{corr}=350$}\label{fig:KorrelationA}
+\end{figure}
+
+
+
+Sieht man sich die Ergebnisse einer fehlerhaften Korrelation (siehe Abbildung \ref{fig:KorrelationA}) genauer an, fällt auf, dass kein eineindeutiges Maximum auftritt, sondern mehrere. Dabei ist das Problem, dass die "richtigen" Maxima teilweise geringere Amplituden haben als die "falschen". Dies hat zur Folge, dass eine Rechenumgebung ohne die Kenntniss der tatsächlichen Signalverschiebung teilweise falsche Ergebnisse ermitteln wird.\\
+Untersucht man das Originalsignal des Moskitos (siehe Abbildung \ref{fig:KorrelationAnalyse2}) genauer fällt auf, dass das Signal eine leichte Periozität aufweist, wobei die Periodendauer des Signals ähnlich des errechneten $t_{min}$ ist. Diese Tatsache erklärt warum es bei der durchgeführten Untersuchung zu mehrern Maxima bei der Korrelation kam. \\
+Zur Minimierung der Fehlerquote werden nun verschiedene Paramter untersucht
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationsAnalyse2}
+\caption{Auszug aus dem Moskitosignal} \label{fig:KorrelationAnalyse2}
+\end{figure}
+
+\subsubsection{Länge des Korrelationssegments}
+
+Die Betrachtung der Korrelationsergebnisse verdeutlicht, dass die errechnete Länge des Korrelationssegments zu kurz ist. Dies wurde dadurch deutlich, dass bei der Ermittlung der Korrelationswerte mehrere Maxima auftraten, da die Korrelationssegmente an mehrereren Stellen im Hauptsignal Ähnlichkeiten aufwiesen. Verlängert man das Korrelationssegment muss zwar mehr Rechenaufwand in Kauf genommen werden, allerdings nimmt auch die Wahrscheinlichkeit ab, dass man ähnliche Teile in den Hauptsignalen findet.\\
+
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationsAnalyse1}
+\caption{Relative Fehlerquote in Abhängigkeit von $K_{corr}$  \linebreak(Start der Aufzeichnung nach 10000 Werten)} \label{fig:KorrelationAnalyse1}
+\end{figure}
+
+Bei der Analyse wurde die Korrelation mit allen Mikrophonen jeweils 1000 mal durchgeführt und die mittlere Fehlerquote ermittelt. Betrachtet man die Ergebnisse der Analyse (siehe Abbildung \ref{fig:KorrelationAnalyse1}) wird deutlich, dass die Fehlerquote mit zunehmender Länge von $K_{corr}$ abnimmt. Es wird deutlich, dass bei einer Korrelationslänge von 3500 Werten nur noch eine Fehlerquote von $0.03$  Prozent  erreicht wird. Mit einer weiteren Erhöhung könnte man die Fehlerquote weiter senken, allerdings würde dies die Laufzeit weiter verlängern. Betrachtet man die benötigte Laufzeit für 3500 Werte gemäß Gleichung \ref{eq:A2A2E1} wird deutlich, hierführ bereits $36.5ms$ benötigt werden.
+Aufgrund des in Abbildung \ref{fig:Korrelation2} beschriebenen Signalaufbaus wird allein eine Signalmesslaufzeit von beinahe $110ms$ benötigt, wobei die benötigte Rechenzeit noch nicht berücksichtigt wurde.
+Da eine noch längere Messung das Orten des Moskitos unmöglich machen, da jenes nach der Berrechnung stets an einem anderen Ort sein würde. Sollte keine größere Korrelationslänge als $K_{corr} = 3500$ gewählt  und stattdessen lieber die angegebene  Fehlerquote in Kauf genommen werden.
+
+
+\subsubsection{Position des Hauptsignals}
+Ein weiterer Faktor beim Signal aufbau ist der Beginn der Hauptsignale. Bei der Untersuchung dieses Parameters (siehe Abbildung \ref{fig:KorrelationAnalyse3}) sticht deutlich der Signalstart bei 7500 herraus, da dort die relative Fehlerquote am geringsten ist.
+Wiederholt man nun die Analyse aus dem vorherigen Kapitel sind ist hier ebenfalls eine deutliche Verringerung der Fehlerquote zu erkennen (siehe Abbildung \ref{fig:KorrelationAnalyse4}). Auch hier wird deutlich, dass die Fehlerquote mit steigender Länge des Korrelationssignals sinkt.
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationsAnalyse4}
+\caption{Relative Fehlerquote in Abhängigkeit von $K_{corr}$  \linebreak(Start der Aufzeichnung nach 7500 Werten)} \label{fig:KorrelationAnalyse4}
+\end{figure}
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{KorrelationsAnalyse3}
+\caption{Relative Fehlerquote in des Signalstarts $K_{corr}$  \linebreak(5000 Messungen mit $K_{corr}=1000$)} \label{fig:KorrelationAnalyse3}
+\end{figure}
+\subsubsection{Zusammenfassung der Untersuchung }
+Abschließend lässt sich zusammenfassen, dass die berechenete Länge des Korrelationssignal deutlich zu kurz für eine akzeptable Positionsbestimmung ist. Aus der Analyse des Startwartes wird deutlich, dass die Ergebnisse stark von dem jeweiligen Signalabschnitt abhängen. Da es in der Realität das Signal des Moskitos allerdings nicht statisch ist wie in der Simulation, ist diese Analyse sekundär, da die Position beim realen Signal nicht beeinflusst werden kann. Allerdings lässt diese Position gut für die Analyse des Rauscheinflusses verwenden. \\\\\\
+Für weitere Berechnungen werden von nun an die Parameter wie folgt gewählt:\\
+$$K_{Startwert} = 7500$$
+$$K_{corr} = 3000$$
+$$K_{sig} = 6000$$

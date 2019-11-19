@@ -8,7 +8,9 @@ arrIterationError = -1 * ones(1,varCount);
 arrErrors = [];
 arrAvgErrors = [];
 arrAbweichung = [];
-
+countError01 = 0;
+countError02 = 0;
+countError03 = 0;
 %% Test für Abweichung in Abhängikeit der Kcorr
 
 for i = 1:varCount
@@ -22,8 +24,15 @@ for i = 1:varCount
         Correlation;
         
         arrAbweichung = [arrAbweichung ((corrTdiff01-corrTdiff01korrekt)/corrTdiff01korrekt) ((corrTdiff02-corrTdiff02korrekt)/corrTdiff02korrekt) ((corrTdiff03-corrTdiff03korrekt)/corrTdiff03korrekt)];
-        
-      
+       if corrIndexDiff01 ~= (-corrIndexDiff01korrekt)
+           countError01= countError01+1;
+       end;
+        if corrIndexDiff02 ~= (-corrIndexDiff02korrekt)
+           countError02= countError02+1;
+       end;
+        if corrIndexDiff03 ~= (-corrIndexDiff03korrekt)
+           countError03= countError03+1;
+       end;
         
 end
     a = arrAbweichung * 100;
