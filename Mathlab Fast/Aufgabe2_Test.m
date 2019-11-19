@@ -9,8 +9,10 @@ setDerivatives(TimeDivs);
 
 %% Test fuer Fehler Rechnung durch Noise
 
-arrSNR = 1000;
-varCount = 10;
+arrSNR = 1: -0.05 : 0;
+%arr1SNR = 1: 1 : 50;
+%arrSNR = 1/ arr1SNR;
+varCount = 1000;
 arrnumberofWrongCorrelations = [];
 arrMeanErrors = [];
 for snr = arrSNR
@@ -22,19 +24,20 @@ for snr = arrSNR
         fly = bornFly(1,1,1);
         BrundleFly;
         code_schnipsel_erzeugen;
+        Normierung;
         tempmic0sig = mic0sig;
         AddNoiseToSignal;
         %plotFunktions.plotsignals0bis100([tempmic0sig mic0sig]);  % to close all figure windows:   close all
-        Normierung;
+        
         Correlation;
         
         %% Berechnen der Richtigkeit des Ergebnisses der Korellation
-        error01 = abs(corrIndexDiff01korrekt- corrIndexDiff01);
-        error02 = abs(corrIndexDiff02korrekt- corrIndexDiff02);
-        error03 = abs(corrIndexDiff03korrekt- corrIndexDiff03);
+        error01 = abs(corrIndexDiff01korrekt + corrIndexDiff01);
+        error02 = abs(corrIndexDiff02korrekt + corrIndexDiff02);
+        error03 = abs(corrIndexDiff03korrekt + corrIndexDiff03);
         arrErrors = [arrErrors error01]; 
         
-        if error01 > 10
+        if error01 > 2
             numberofWrongCorrelations = numberofWrongCorrelations + 1;
         end
         
