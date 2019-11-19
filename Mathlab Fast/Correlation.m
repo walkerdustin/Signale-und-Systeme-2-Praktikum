@@ -1,4 +1,4 @@
-corrSegmentLength = 3000; % Länge des Korrelationssegment
+corrSegmentLength = 5000; % Länge des Korrelationssegment
 corrBegin = 7500; %Stelle ab der Korrelationssegment ausgeschnitten werden soll
 corrEnde = corrBegin + corrSegmentLength;
 

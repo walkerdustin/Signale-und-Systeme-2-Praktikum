@@ -38,9 +38,9 @@ end
     a = arrAbweichung * 100;
     
     aa = mean(a)
-
-%{
 %% Test fuer Fehler Rechnung durch Schallgeschwindigkeit bzw.: Temperatur
+%{
+
 arrTemperature = 0:5:60;
 
 for temperature = arrTemperature

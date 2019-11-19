@@ -9,8 +9,8 @@ setDerivatives(TimeDivs);
 
 %% Test fuer Fehler Rechnung durch Noise
 
-arrSNR = 50:-1:1;
-varCount = 100;
+arrSNR = 1000;
+varCount = 10;
 arrnumberofWrongCorrelations = [];
 arrMeanErrors = [];
 for snr = arrSNR
@@ -29,13 +29,13 @@ for snr = arrSNR
         Correlation;
         
         %% Berechnen der Richtigkeit des Ergebnisses der Korellation
-        error01 = corrTdiff01korrekt - corrTdiff01;
-        error02 = corrTdiff02korrekt - corrTdiff02;
-        error03 = corrTdiff03korrekt - corrTdiff03;
+        error01 = abs(corrIndexDiff01korrekt- corrIndexDiff01);
+        error02 = abs(corrIndexDiff02korrekt- corrIndexDiff02);
+        error03 = abs(corrIndexDiff03korrekt- corrIndexDiff03);
         arrErrors = [arrErrors error01]; 
         
-        if error01 > 0.000005
-            numberofWrongCorrelations = numberofWrongCorrelations + 1
+        if error01 > 10
+            numberofWrongCorrelations = numberofWrongCorrelations + 1;
         end
         
         
