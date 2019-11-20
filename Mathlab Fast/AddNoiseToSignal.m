@@ -1,4 +1,4 @@
-SignalToNoiseRatio = 50; % == Signal/Noise
+SignalToNoiseRatio = 50; % == Signal/Noise  in dB
 %S = RandStream('mt19937ar','Seed',5489);
 %fprintf('adding noise with snr = %d \n', snr)
 

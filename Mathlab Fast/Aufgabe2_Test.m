@@ -9,10 +9,10 @@ setDerivatives(TimeDivs);
 
 %% Test fuer Fehler Rechnung durch Noise
 
-arrSNR = 1: -0.05 : 0;
+arrSNR = 10: -1: -10;
 %arr1SNR = 1: 1 : 50;
 %arrSNR = 1/ arr1SNR;
-varCount = 1000;
+varCount = 100;
 arrnumberofWrongCorrelations = [];
 arrMeanErrors = [];
 for snr = arrSNR
