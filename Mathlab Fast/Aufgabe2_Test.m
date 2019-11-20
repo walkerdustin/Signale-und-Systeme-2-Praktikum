@@ -1,21 +1,19 @@
 clear all
-import
 Variables;
-
-
 fly = bornFly(1,1,1);
 BrundleFly;
 setDerivatives(TimeDivs);
 
 %% Test fuer Fehler Rechnung durch Noise
 
-arrSNR = 10: -1: -10;
+%arrSNR = 5:-0.1: 0;
+arrSnrDB = 10:-1:-10;
 %arr1SNR = 1: 1 : 50;
 %arrSNR = 1/ arr1SNR;
-varCount = 100;
+varCount = 1000;
 arrnumberofWrongCorrelations = [];
 arrMeanErrors = [];
-for snr = arrSNR
+for snrDB = arrSnrDB
     numberofWrongCorrelations = 0;
     arrErrors = [];
     
