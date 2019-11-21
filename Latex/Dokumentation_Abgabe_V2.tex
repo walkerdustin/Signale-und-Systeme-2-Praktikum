@@ -111,3 +111,15 @@ Für weitere Berechnungen werden von nun an die Parameter wie folgt gewählt:\\
 $$K_{Startwert} = 7500$$
 $$K_{corr} = 3000$$
 $$K_{sig} = 6000$$
+
+\subsubsection{Korrelation mit awgn Rauschen }
+Bis jetzt haben wir angenommen, dass das Audiosignal auf dem Weg von der Signalquelle zum Mikrophon nicht gestört wird. Nun betrachten wir den Fall mit Rauschen. Wir gehen davon aus, dass wir ein Additive White Gausian Noise (awgn) haben. Dabei handelt es sich um ein Normalverteiltes Zufallssignal mit unendlicher Bandbreite, welches auf unser Nutzsignal aufaddiert wird. Dabei ist das Rauschen auf dem Weg zu Mikrofon 1 unabhängig vom Rauschen auf dem Weg zu Mikrofon 2. Wir wollen nun untersuchen wie dieses Rauschen unser Korrelationsergebnis beeinflusst. Wichtig hierbei ist das Signal to Noise Ratio. Dies beschreibt das Verhältnis der Leistungen vom Nutzsignal zum Rauschsignal. 
+$$ snr = \frac{P_{nutzsignl}}{P_{Rauschsignal}} [dB]$$
+Mit Hilfe eines Matlab Scripts haben wir simuliert wie sich awgn Rauschen auf die Korrelation auswirkt. Wir haben die Korrelation jeweils 1000 mal für unterschiedliche snr durchlaufen lassen. Die Position der Signalquelle war jedes mal zufällig. Auf dem Schaubild (siehe Abbildung \ref{fig:KorrelationAnalyseMitRauschen}) ist zu sehen, dass wir bis zu einem snr von 7dB eine Fehlerquote von 0\% haben. Bei einem snr von 0dB bzw. 1/1 haben wir gerade einmal eine Fehlerquote von 3\%.
+
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.4\textwidth]{Correlation mit Rauschen, (SNR) bei 4000 Segmentlaenge und 7500 corrBegin (in dB)}
+\caption{Korrelation mit Rauschen} \label{fig:KorrelationAnalyseMitRauschen}
+\end{figure}
