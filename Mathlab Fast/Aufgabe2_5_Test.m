@@ -7,7 +7,7 @@ setDerivatives(TimeDivs);
 %% Test fuer Fehler Rechnung durch Noise
 
 %arrSNR = 5:-0.1: 0;
-arrSnrDB = 0;
+arrSnrDB = 5;
 %arrSnrDB = 10:-1:-10;
 %arr1SNR = 1: 1 : 50;
 %arrSNR = 1/ arr1SNR;

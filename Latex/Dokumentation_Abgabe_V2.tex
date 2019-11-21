@@ -122,7 +122,7 @@ Mit Hilfe eines Matlab Scripts haben wir simuliert wie sich awgn Rauschen auf di
 
 \begin{figure}
 \centering 
-\includegraphics[width=0.4\textwidth]{Correlation mit Rauschen, (SNR) bei 4000 Segmentlaenge und 7500 corrBegin (in dB)}
+\includegraphics[width=0.49\textwidth]{Correlation mit Rauschen, (SNR) bei 4000 Segmentlaenge und 7500 corrBegin (in dB)}
 \caption{Korrelation mit Rauschen} \label{fig:KorrelationAnalyseMitRauschen}
 \end{figure}
 
@@ -130,5 +130,21 @@ Mit Hilfe eines Matlab Scripts haben wir simuliert wie sich awgn Rauschen auf di
 Was bedeutet diese Erkenntnis für unseren Dreidimensionalen Fall mit vier Mikrophonen? Dieser Frage wollen wir uns nun stellen.
 
 \subsubsection{Annahme}
-Im Dreidimensionalen muss die Korrelation drei mal pro Positionsbestimmung durchgeführt werden mic1, mic2 und mic3 werden jeweils mit mic0 korreliert, um die Laufzeitdifferenzen zu bestimmen. Theoretisch sollte sich die Wahrscheinlichkeit für eine Fehlgeschlagene Korrelation Kubieren 
+Im Dreidimensionalen muss die Korrelation drei mal pro Positionsbestimmung durchgeführt werden mic1, mic2 und mic3 werden jeweils mit mic0 korreliert, um die Laufzeitdifferenzen zu bestimmen. Wenn man davon ausgeht, dass die Erfolgsquote der drei Korrelationen unabhängig voneinander ist sollte sich die Wahrscheinlichkeit für eine erfolgreiche Korrelation kubieren. Wenn zum Beispiel die Erfolgschancen für eine Korrelation 97\% ist, dann ist die Wahrscheinlichkeit für drei aufeinanderfolgende erfolgreiche Korrelationen $0.97^{3} = 0.913$. Es ist also sehr wichtig, dass eine einzelne Korrelation recht zuverlässig ist.
 
+\subsubsection{Simulation}
+Um dieses System zu simulieren haben wir nun die Zeitdifferenzen aus den drei Korrelationen in das Newton Verfahren gegeben um eine berechnete Position der Signalquelle zu erhalten. Für die Simulation haben wir uns für eine Korrelationslänge von 4000 und ein Signal to Noise Ratio von 0 dB entschieden. 
+In diesem Prozess können nun zwei mögliche Fehler auftreten. Wenn bei der Korrelation der Falsche Hochpunkt gewählt wird, dann Resultiert das in einem berechnetem Punkt der Schallquelle, welcher meist weit außerhalb des möglichen Raumes. Es ist, wie im ersten Praktikumsversuch schon beschrieben, auch möglich, dass das Newtonverfahren keine Nullstelle findet.
+
+
+
+
+\begin{figure}
+\centering 
+\includegraphics[width=0.49\textwidth]{Korrelation mit Rauschen im Dreidimensionalem, Histogramm zu 1000 Simulationen}
+\caption{Korrelation mit Rauschen im Dreidimensionalem, Histogramm zu 1000 Simulationen} \label{fig:KorrelationAnalyseMitRauschen Histogramm}
+\end{figure}
+
+
+\subsubsection{Interpretation des Ergebnisses}
+Bei den von uns bestimmten Parametern und dem willkürlich auf 0 dB festgelegtem SNR hat das Moskito noch etwas Überlebenschance. jedes zehnte mal schießen wir komplett daneben. Falls die Korrelation und das Newton verfahren erfolgreich waren, sind wir auf ungefähr 5 mm genau. Ein durchschnittliches Moskito ist 6 mm lang und 2 mm breit. Wir werden also häufiger daneben schießen, als wir treffen. Dies ist jedoch in Ordnung, da wir nur einmal treffen müssen.
