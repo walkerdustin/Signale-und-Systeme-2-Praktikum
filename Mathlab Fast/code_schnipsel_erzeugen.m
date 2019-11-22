@@ -6,7 +6,7 @@
 
 
 t0 = distMic0 / vSound;
-missedValues0 = t0 * samplingRate  + 10000;
+missedValues0 =   10000 - t0 * samplingRate ;
 anfang0 = round(missedValues0 + 1);
 ende0 = round(missedValues0 + 100000);
 mic0sig = Qt(anfang0:ende0);
@@ -14,19 +14,19 @@ mic0sig = Qt(anfang0:ende0);
 
 
 t1 = distMic1 / vSound;
-missedValues1 = t1 * samplingRate  + 10000;
+missedValues1 = 10000 - t1 * samplingRate;
 anfang1 = round(missedValues1 + 1);
 ende1 = round(missedValues1 + 100000);
 mic1sig = Qt(anfang1:ende1);
 
 t2 = distMic2 / vSound;
-missedValues2 = t2 * samplingRate  + 10000;
+missedValues2 =  10000 - t2 * samplingRate;
 anfang2 = round(missedValues2 + 1);
 ende2 = round(missedValues2 + 100000);
 mic2sig = Qt(anfang2:ende2);
 
 t3 = distMic3 / vSound;
-missedValues3 = t3 * samplingRate  + 10000;
+missedValues3 =  10000 - t3 * samplingRate;
 anfang3 = round(missedValues3 + 1);
 ende3 = round(missedValues3 + 100000);
 mic3sig = Qt(anfang3:ende3);
